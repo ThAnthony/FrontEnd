@@ -1,1 +1,15 @@
-<p>main works!</p>
+<button (click)="onLogout()" mat-button>Logout</button>
+<mat-tab-group>
+  <mat-tab label="Productos">
+    <app-products></app-products>
+  </mat-tab>
+  <mat-tab label="Ventas">
+    <app-sales></app-sales>
+  </mat-tab>
+  <!-- <mat-tab label="Historial de Sesiones">
+    <producto-card></producto-card>
+  </mat-tab> -->
+</mat-tab-group>
+<div class="content">
+  <router-outlet></router-outlet>
+</div>

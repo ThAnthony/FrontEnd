@@ -24,7 +24,7 @@ export class LoginComponent {
     const response = await this.authService.login(this.username, this.password);
     if (response.isLogin) {
       console.log("logueado");
-      this.router.navigate(['/home']);
+      this.router.navigate(['/main']);
     }
     else {
       console.log("No logueado");
