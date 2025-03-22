@@ -1,14 +1,22 @@
 <div class="add-product-container">
     <button (click)="AgregarProduct()">Agregar Producto</button>
-  </div>
+</div>
 <div *ngIf="products.length >0; else noProducts" class="products-grid">
     <div *ngFor="let product of products" class="product-item">
         <h3>{{product.nombreProducto}}</h3>
         <img [src]="product.imgurl" alt="{{ product.nombreProducto }}" />
         <p>{{product.descripcion}}</p>
         <p>Precio: {{product.precio}}</p>
-        <p *ngIf="product.isOferta">Oferta: {{ product.porcentajeOferta }}%</p>
+        <p *ngIf="product.isOferta">Oferta: {{ product.porcentajeOferta*100 }}%</p>
         <p>Precio final: {{ product.precioFinal }}</p>
+        <div class="product-actions">
+            <button mat-icon-button (click)="EditarProduct(product)" class="edit-button">
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-icon-button (click)="BorrarProduct(product.idProducto)" class="delete-button">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
     </div>
 </div>
 <ng-template #noProducts>

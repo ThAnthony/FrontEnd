@@ -4,16 +4,22 @@ import { CommonModule } from '@angular/common';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { ProductDialogComponent } from './dialog/product-dialog/product-dialog.component';
 import { firstValueFrom } from 'rxjs';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-products',
   standalone:true,
-  imports: [CommonModule, MatDialogModule],
+  imports: [
+    CommonModule,
+    MatDialogModule,
+    MatIconModule
+  ],
   templateUrl: './show-products.component.html',
   styleUrl: './show-products.component.css'
 })
 export class ShowProductsComponent implements OnInit {
   products:any[] =[];
+  product:any;
 
   constructor(
     private readonly productService:ProductService,
@@ -34,11 +40,32 @@ export class ShowProductsComponent implements OnInit {
     const newProduct= await firstValueFrom(dialogRef.afterClosed());
     
     if (newProduct) {
-      console.log(newProduct);
       const rpta = await this.productService.AgregarProduct(newProduct);
       console.log(rpta);
       this.ngOnInit();
     }
   }
+
+  async EditarProduct(product:any) {
+    const dialogRef = this.dialog.open(ProductDialogComponent, {
+      width: '400px',
+      maxHeight:'90vh',
+      autoFocus:false,
+      data:product
+    });
+
+    const updateProduct = await firstValueFrom(dialogRef.afterClosed());
+
+    if (updateProduct) {
+      const rpta = await this.productService.ActualizarProduct(
+        updateProduct.idProducto, updateProduct);
+      this.ngOnInit();
+    }
+  }
+
+    async BorrarProduct(idProduct:number) {
+      await this.productService.BorrarProduct(idProduct)
+      this.ngOnInit();
+    }
 
 }

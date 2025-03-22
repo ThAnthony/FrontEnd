@@ -28,4 +28,20 @@ export class ProductService {
     );
     return response;
   }
+
+  async ActualizarProduct(idProduct: number, product:object) {
+    const url = `${this.apiUrl}/products/${idProduct}`;
+    const response = await firstValueFrom(
+      this.http.put<any>(url,product)
+    );
+    return response;
+  }
+
+  async BorrarProduct(idProduct:number) {
+    const url = `${this.apiUrl}/products/${idProduct}`;
+    const response = await firstValueFrom(
+      this.http.delete<boolean>(url)
+    );
+    return response;
+  }
 }

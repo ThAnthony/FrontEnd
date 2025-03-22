@@ -1,4 +1,4 @@
-<h2>Agregar Producto</h2>
+<h2>{{data ? 'Editar Producto' : 'Agregar Producto'}}</h2>
 <form>
   <mat-dialog-content>
     <mat-form-field>
@@ -25,6 +25,6 @@
   </mat-dialog-content>
   <mat-dialog-actions>
     <button mat-button (click)="Cancelar()">Cancelar</button>
-    <button mat-button (click)="Agregar()">Agregar</button>
+    <button mat-button (click)="Guardar()">Guardar</button>
   </mat-dialog-actions>
 </form>

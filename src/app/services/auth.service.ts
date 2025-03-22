@@ -15,7 +15,8 @@ export class AuthService {
     const url = `${this.apiUrl}/user/login`;
     const response = await firstValueFrom(
       this.http.post<{user?:any, isLogin:string}>(
-        url, { username, password }));
+        url, { username, password })
+    );
 
     if(response.isLogin) {
       this.isAuthenticated= true;
