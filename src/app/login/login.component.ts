@@ -21,7 +21,6 @@ export class LoginComponent {
   ) {}
 
   async onSubmit() {
-    console.log("onSubmit");
     const response = await this.authService.login(this.username, this.password);
     if (response.isLogin) {
       console.log("logueado");

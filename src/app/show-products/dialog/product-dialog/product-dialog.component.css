@@ -1,0 +1,24 @@
+h2 {
+  margin-left: 27px;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  max-height:90vh;
+}
+
+mat-form-field {
+    width: 100%;
+    margin-bottom: 8px;
+  }
+  
+mat-dialog-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.mat-dialog-content {
+  max-height: 70vh;
+  overflow: auto; /* Ocultar el desbordamiento */
+}

@@ -1,1 +1,16 @@
-<p>show-products works!</p>
+<div class="add-product-container">
+    <button (click)="AgregarProduct()">Agregar Producto</button>
+  </div>
+<div *ngIf="products.length >0; else noProducts" class="products-grid">
+    <div *ngFor="let product of products" class="product-item">
+        <h3>{{product.nombreProducto}}</h3>
+        <img [src]="product.imgurl" alt="{{ product.nombreProducto }}" />
+        <p>{{product.descripcion}}</p>
+        <p>Precio: {{product.precio}}</p>
+        <p *ngIf="product.isOferta">Oferta: {{ product.porcentajeOferta }}%</p>
+        <p>Precio final: {{ product.precioFinal }}</p>
+    </div>
+</div>
+<ng-template #noProducts>
+    <p>No hay productos disponibles</p>
+</ng-template>

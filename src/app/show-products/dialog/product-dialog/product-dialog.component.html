@@ -1,0 +1,30 @@
+<h2>Agregar Producto</h2>
+<form>
+  <mat-dialog-content>
+    <mat-form-field>
+      <mat-label>Nombre del Producto</mat-label>
+      <input matInput [(ngModel)]="nombreProducto" name="nombreProducto">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Descripción</mat-label>
+      <input matInput [(ngModel)]="descripcion" name="descripcion">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Precio</mat-label>
+      <input matInput type="number" [(ngModel)]="precio" name="precio" min="1">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>URL de la Imagen</mat-label>
+      <input matInput [(ngModel)]="imgurl" name="imgurl">
+    </mat-form-field>
+    <mat-checkbox [(ngModel)]="isOferta" name="isOferta">En oferta</mat-checkbox>
+    <mat-form-field *ngIf="isOferta">
+      <mat-label>Porcentaje de Oferta</mat-label>
+      <input matInput type="number" [(ngModel)]="porcentajeOferta" name="porcentajeOferta" min="1" max="99">
+    </mat-form-field>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button mat-button (click)="Cancelar()">Cancelar</button>
+    <button mat-button (click)="Agregar()">Agregar</button>
+  </mat-dialog-actions>
+</form>
