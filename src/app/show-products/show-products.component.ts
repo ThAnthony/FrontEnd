@@ -19,7 +19,7 @@ import { MatIconModule } from '@angular/material/icon';
 })
 export class ShowProductsComponent implements OnInit {
   products:any[] =[];
-  product:any;
+  isAdmin : boolean = false;
 
   constructor(
     private readonly productService:ProductService,
@@ -28,6 +28,17 @@ export class ShowProductsComponent implements OnInit {
 
   async ngOnInit() {
     this.products = await this.productService.ListProducts();
+    this.CheckRole();
+  }
+
+  CheckRole() {
+    const userRol = localStorage.getItem('rol');
+    this.isAdmin = userRol === 'administrador';
+    console.log('Rol revisado:',this.isAdmin);
+  }
+
+  ComprarProduct(product:any) {
+    
   }
 
   async AgregarProduct() {

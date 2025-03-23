@@ -1,4 +1,4 @@
-<div class="add-product-container">
+<div class="add-product-container" *ngIf="isAdmin">
     <button (click)="AgregarProduct()">Agregar Producto</button>
 </div>
 <div *ngIf="products.length >0; else noProducts" class="products-grid">
@@ -10,13 +10,20 @@
         <p *ngIf="product.isOferta">Oferta: {{ product.porcentajeOferta*100 }}%</p>
         <p>Precio final: {{ product.precioFinal }}</p>
         <div class="product-actions">
+          <ng-container *ngIf="!isAdmin">
+            <button mat-button (click)="ComprarProduct(product)" class="buy-button">
+              <mat-icon>shopping_cart</mat-icon>Comprar
+            </button>
+          </ng-container> 
+          <ng-container *ngIf="isAdmin">
             <button mat-icon-button (click)="EditarProduct(product)" class="edit-button">
               <mat-icon>edit</mat-icon>
             </button>
             <button mat-icon-button (click)="BorrarProduct(product.idProducto)" class="delete-button">
               <mat-icon>delete</mat-icon>
             </button>
-          </div>
+          </ng-container>
+        </div>
     </div>
 </div>
 <ng-template #noProducts>

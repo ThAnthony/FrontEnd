@@ -20,7 +20,7 @@ export class AuthService {
 
     if(response.isLogin) {
       this.isAuthenticated= true;
-      localStorage.setItem('isAuthenticated','true');
+      localStorage.setItem('rol',response.user.rol);
     }
 
     console.log("Servicio auth.user:",response.user);
@@ -30,7 +30,7 @@ export class AuthService {
 
   logout() {
     this.isAuthenticated = false;
-    localStorage.removeItem('isAuthenticated');
+    localStorage.removeItem('rol');
   }
 
   isLoggedIn(): boolean {
