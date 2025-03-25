@@ -5,6 +5,7 @@ import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { ProductDialogComponent } from './dialog/product-dialog/product-dialog.component';
 import { firstValueFrom } from 'rxjs';
 import { MatIconModule } from '@angular/material/icon';
+import { CarritoService } from '../services/carrito.service';
 
 @Component({
   selector: 'app-products',
@@ -18,12 +19,13 @@ import { MatIconModule } from '@angular/material/icon';
   styleUrl: './show-products.component.css'
 })
 export class ShowProductsComponent implements OnInit {
-  products:any[] =[];
+  products:any[] = [];
   isAdmin : boolean = false;
 
   constructor(
     private readonly productService:ProductService,
-    public readonly dialog: MatDialog
+    public readonly dialog: MatDialog,
+    private readonly carritoService:CarritoService
   ) {}
 
   async ngOnInit() {
@@ -34,10 +36,10 @@ export class ShowProductsComponent implements OnInit {
   CheckRole() {
     const userRol = localStorage.getItem('rol');
     this.isAdmin = userRol === 'administrador';
-    console.log('Rol revisado:',this.isAdmin);
   }
 
   ComprarProduct(product:any) {
+    this.carritoService.agregarProducto(product);
     
   }
 
@@ -52,7 +54,6 @@ export class ShowProductsComponent implements OnInit {
     
     if (newProduct) {
       const rpta = await this.productService.AgregarProduct(newProduct);
-      console.log(rpta);
       this.ngOnInit();
     }
   }

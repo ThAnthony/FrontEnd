@@ -17,7 +17,6 @@ export class ProductService {
     const response = await firstValueFrom(
       this.http.get<any[]>(url)
     );
-    console.log(response);
     return response;
   }
 

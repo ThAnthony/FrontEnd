@@ -1,1 +1,28 @@
-<p>show-sales works!</p>
+<h1>{{isAdmin ? 'Ventas Realizadas':' Compras Realizadas'}}</h1>
+<div>
+    <div *ngIf="ventas.length >0, else emptySales">
+        <table class="table-ventas">
+            <thead>
+              <tr>
+                <th *ngIf="isAdmin">Nomre del Usuario</th>
+                <th>Nombre del Producto</th>
+                <th>Descripción</th>
+                <th>Precio</th>
+                <th>Fecha de la {{isAdmin? 'Venta': 'Compra'}}</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let venta of ventas">
+                <td *ngIf="isAdmin">{{venta.Usuario.nombrePersona}}</td>
+                <td>{{ venta.Producto.nombreProducto }}</td>
+                <td>{{ venta.Producto.descripcion }}</td>
+                <td>{{ venta.montoFinal | currency }}</td>
+                <td>{{venta.fechaVenta}}</td>
+              </tr>
+            </tbody>
+          </table>
+    </div>
+</div>
+<ng-template #emptySales>
+    <p>{{isAdmin ? 'Sin ventas' :'Sin compras realizadas'}}</p>
+</ng-template>
