@@ -1,4 +1,13 @@
-<button (click)="onLogout()" mat-button>Logout</button>
+<div class="header">
+  <button (click)="onLogout()" mat-button>Logout</button>
+  <a routerLink="/carrito" class="cart-link" style="text-decoration: none;">
+    <div *ngIf="!isAdmin">
+      <button mat-button class="cart-button">
+        <mat-icon>shopping_cart</mat-icon> Ver Carrito
+      </button>
+    </div>
+  </a>
+</div>
 <mat-tab-group>
   <mat-tab label="Productos">
     <app-products></app-products>

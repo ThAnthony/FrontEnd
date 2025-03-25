@@ -1,0 +1,37 @@
+<h1>Carrito de Compras</h1>
+<div class="contenedor-carrito">
+  <div *ngIf="carrito.length > 0 ; else emptyCart">
+    <table>
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Descripción</th>
+          <th>Precio</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let producto of carrito">
+          <td>{{ producto.nombreProducto }}</td>
+          <td>{{ producto.descripcion }}</td>
+          <td>{{ producto.precioFinal | currency }}</td>
+          <td>
+            <button (click)="removeProducto(producto)">Eliminar</button>
+          </td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="2"><strong>Total:</strong></td>
+          <td colspan="2">{{ calcularTotal() | currency }}</td>
+        </tr>
+      </tfoot>
+    </table>
+    <div class="button-container">
+      <button class="pago-btn" (click)="registrarVenta()">Realizar Pago</button> 
+    </div>
+  </div>
+</div>
+<ng-template #emptyCart>
+  <p>El carrito está vacío.</p>
+</ng-template>

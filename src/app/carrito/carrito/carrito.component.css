@@ -1,0 +1,76 @@
+.contenedor-carrito {
+    max-width: 800px; 
+    margin: 0 auto; 
+    padding: 20px; 
+}
+
+h1 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    text-align: center;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+}
+
+th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+    text-align: center;
+}
+
+tfoot td {
+    font-weight: bold;
+    background-color: #f9f9f9;
+}
+
+button {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+button:hover {
+    background-color: #c82333; 
+}
+
+p {
+    text-align: center;
+    font-size: 18px;
+    color: #555;
+}
+
+.button-container {
+    display: flex;
+    justify-content: flex-end; /* Alinea el botón a la derecha */
+    margin-top: 10px;
+}
+
+.pago-btn {
+    background-color: #28a745;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.pago-btn:hover {
+    background-color: #218838;
+}

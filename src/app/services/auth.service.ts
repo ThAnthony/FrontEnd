@@ -8,6 +8,7 @@ import { firstValueFrom, map, Observable } from 'rxjs';
 export class AuthService {
   private apiUrl = 'http://localhost:3000';
   private isAuthenticated=false;
+  private usuarioActual: any = null; 
 
   constructor(private http: HttpClient) {}
 
@@ -20,6 +21,7 @@ export class AuthService {
 
     if(response.isLogin) {
       this.isAuthenticated= true;
+      this.usuarioActual=response.user;
       localStorage.setItem('rol',response.user.rol);
     }
 
@@ -30,11 +32,16 @@ export class AuthService {
 
   logout() {
     this.isAuthenticated = false;
+    this.usuarioActual = null;
     localStorage.removeItem('rol');
   }
 
   isLoggedIn(): boolean {
     return this.isAuthenticated;
+  }
+
+  obtenerUsuario() {
+    return this.usuarioActual;
   }
 
 }
