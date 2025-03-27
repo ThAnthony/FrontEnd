@@ -1,8 +1,24 @@
 .header {
-    display: flex; /* Usamos flexbox para alinear los elementos */
-    justify-content: space-between; /* Espaciado entre Logout y Ver Carrito */
-    align-items: center; /* Alineación vertical */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     padding: 10px;
+}
+.user-section {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.profile-icon {
+    font-size: 24px;
+    color: #333;
 }
 
 .cart-button {

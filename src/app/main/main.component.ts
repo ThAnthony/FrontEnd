@@ -25,13 +25,15 @@ import { CommonModule } from '@angular/common';
 })
 export class MainComponent implements OnInit {
   isAdmin = false;
+  user: string= '';
 
   constructor(
     private readonly authService: AuthService,
     private readonly router: Router) {}
 
   ngOnInit(): void {
-    this.CheckRole();  
+    this.CheckRole(); 
+    this.user = this.authService.obtenerUsuario().nombrePersona;
   }
   
   onLogout() {
@@ -43,4 +45,5 @@ export class MainComponent implements OnInit {
     const userRol = localStorage.getItem('rol');
     this.isAdmin = userRol === 'administrador';
   }
+
 }
