@@ -1,3 +1,5 @@
+import { environment } from '../../environment';
+
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { firstValueFrom } from 'rxjs';
@@ -7,7 +9,7 @@ import { AuthService } from './auth.service';
   providedIn: 'root'
 })
 export class SaleService {
-  private apiUrl = 'http://localhost:3000';
+  private apiUrl = environment.apiUrl;
 
   constructor(
     private readonly http:HttpClient,

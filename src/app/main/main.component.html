@@ -1,11 +1,13 @@
 <div class="header">
   <button (click)="onLogout()" mat-button>Logout</button>
   <div class="user-section">
-    <a routerLink="/carrito" class="cart-link" style="text-decoration: none;">
-      <button mat-button class="cart-button">
-        <mat-icon>shopping_cart</mat-icon> Ver Carrito
-      </button>
-    </a>
+    <div *ngIf="!isAdmin">
+      <a routerLink="/carrito" class="cart-link" style="text-decoration: none;">
+        <button mat-button class="cart-button">
+          <mat-icon>shopping_cart</mat-icon> Ver Carrito
+        </button>
+      </a>
+    </div>
     <div class="user-info">
       <mat-icon class="profile-icon">account_circle</mat-icon>
       <span class="user-name">{{ user }}</span>
