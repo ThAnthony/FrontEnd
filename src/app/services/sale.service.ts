@@ -16,11 +16,11 @@ export class SaleService {
     private readonly authService: AuthService
   ) { }
 
-  async AgregarVenta(newVenta:object): Promise<any> {
+  async AgregarVenta(newVenta:object): Promise<any[]> {
     const url = `${this.apiUrl}/sales`;
     
     const response = await firstValueFrom(
-      this.http.post<any>(url,newVenta)
+      this.http.post<any[]>(url,newVenta)
     );
     return response;
   }

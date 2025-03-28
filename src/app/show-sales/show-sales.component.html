@@ -17,7 +17,7 @@
                 <td>{{ venta.Producto.nombreProducto }}</td>
                 <td>{{ venta.Producto.descripcion }}</td>
                 <td>{{ venta.montoFinal | currency }}</td>
-                <td>{{venta.fechaVenta}}</td>
+                <td>{{venta.fechaVenta | date:'dd/MM/yyyy HH:mm:ss'}}</td>
               </tr>
             </tbody>
           </table>

@@ -26,9 +26,6 @@ export class AuthService {
       this.usuarioActual=response.user;
       localStorage.setItem('rol',response.user.rol);
     }
-
-    console.log("Servicio auth.user:",response.user);
-    console.log("Servicio auth-message:",response.isLogin);
     return response;
   }
 

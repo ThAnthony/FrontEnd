@@ -33,16 +33,17 @@ export class CarritoComponent implements OnInit {
     return this.carrito.reduce((total,producto) =>total +producto.precioFinal,0);
   }
 
-  registrarVenta() {
+  async registrarVenta() {
     const usuario = this.authService.obtenerUsuario();
-    this.carrito.forEach(async producto => {
-      const nuevaVenta = {
-        montoFinal: producto.precioFinal, 
-        Producto: producto, 
-        Usuario: usuario, 
-      };
-      await this.VentaService.AgregarVenta(nuevaVenta);
-    });
+
+    const nuevasVentas = this.carrito.map(producto => ({
+      montoFinal: producto.precioFinal, 
+      Producto: producto, 
+      Usuario: usuario, 
+    }));
+
+    await this.VentaService.AgregarVenta(nuevasVentas);
+
     this.carritoService.limpiarLista();
     this.router.navigate(['/main']);
   }
