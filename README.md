@@ -1,3 +1,7 @@
+#Video de la funcionalidad y lógica
+https://www.loom.com/share/632fae897857489ba6bd20fa56420873?t=107&sid=a85828dd-4a3f-4623-8b82-5eee3739bdd6
+
+
 # FrontAngular
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.1.5.
